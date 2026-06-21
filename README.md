@@ -1,33 +1,41 @@
-# Java Multithreaded Port Scanner
+# 🛡️ Java Multithreaded Port Scanner
 
-Acest proiect reprezintă o aplicație desktop completă de **Port Scanner**, dezvoltată în limbajul Java pentru stagiul de practică universitar. Aplicația permite scanarea eficientă a porturilor TCP pentru un anumit Host sau adresă IP, oferind feedback vizual în timp real și posibilitatea de a exporta rezultatele auditului.
+This project represents a complete desktop **Port Scanner** application developed in Java for the university internship stage. The application enables efficient scanning of TCP ports for a specific Host or IP address, providing real-time visual feedback and the capability to export audit results.
 
-## 🚀 Caracteristici Principale
+---
 
-* **Performanță Ridicată (Multithreading):** Logica de scanare utilizează un pool de fire de execuție (`ExecutorService`), permițând verificarea simultană a zecilor de porturi și reducând masiv timpul total de execuție.
-* **Interfață Grafică Responsivă (GUI Swing):** Designul este realizat integral în Swing. Pentru a preveni blocarea ferestrei pe durata scanărilor intense, logica de rețea este decuplată de firul principal de execuție grafică (EDT) prin intermediul tehnologiei `SwingWorker`.
-* **Arhitectură Curată (Separation of Concerns):** Proiectul respectă principiile programării orientate pe obiecte (POO), având o separare clară între logica de business (rețelistică/socket-uri), interfața vizuală și utilitarele sistemului.
-* **Funcționalitate de Export:** Aplicația oferă posibilitatea salvării live a rezultatelor scanării într-un fișier local (format CSV/TXT) pentru un audit de securitate ulterior.
+### 📸 Preview
 
-## 🛠️ Tehnologii și Concepte Utilizate
+![Port Scanner Interface](./images/port-scanner-gui.png)
 
-* **Limbaj:** Java 17
-* **Gestiune Proiect:** Structură modulară bazată pe standardul Maven (`pom.xml`)
-* **Networking:** `java.net.Socket` (conexiuni bazate pe protocolul TCP/IP cu Timeout personalizabil)
-* **Conconcurență:** `java.util.concurrent.ExecutorService`, `ThreadPoolExecutor`
+---
+
+## 🚀 Key Features
+
+* **High Performance (Multithreading):** The scanning logic utilizes a thread pool (`ExecutorService`), allowing simultaneous verification of dozens of ports and massively reducing the total execution time.
+* **Responsive Graphical Interface (GUI Swing):** The design is built entirely using Swing. To prevent the window from freezing during intensive scans, the network logic is decoupled from the main Event Dispatch Thread (EDT) using `SwingWorker` technology.
+* **Clean Architecture (Separation of Concerns):** The project adheres to Object-Oriented Programming (OOP) principles, maintaining a clear separation between business logic (networking/sockets), the visual interface, and system utilities.
+* **Export Functionality:** The application provides the ability to save the live scanning results into a local file (CSV/TXT format) for subsequent security auditing.
+
+## 🛠️ Technologies and Concepts Used
+
+* **Language:** Java 17
+* **Project Management:** Modular structure based on the Maven standard (`pom.xml`)
+* **Networking:** `java.net.Socket` (TCP/IP protocol connections with customizable Timeout)
+* **Concurrency:** `java.util.concurrent.ExecutorService`, `ThreadPoolExecutor`
 * **GUI:** Java Swing (`JFrame`, `JTable`, `JProgressBar`, `SwingWorker`)
 
-## 📂 Structura Proiectului
+## 📂 Project Structure
 
-* `src/main/java/com/scanner/Main.java` - Punctul de intrare (Entry Point) în aplicație.
-* `src/main/java/com/scanner/core/` - Conține motorul de scanare (`PortScanner`) și modelul de date pentru rezultate (`ScanResult`).
-* `src/main/java/com/scanner/gui/` - Conține clasa responsabilă de interfața grafică (`MainFrame`).
-* `src/main/java/com/scanner/util/` - Conține logica de scriere și export pe disc a fișierelor de raport (`ResultExporter`).
+* `src/main/java/com/scanner/Main.java` - The entry point of the application.
+* `src/main/java/com/scanner/core/` - Contains the scanning engine (`PortScanner`) and the data model for results (`ScanResult`).
+* `src/main/java/com/scanner/gui/` - Contains the class responsible for the graphical user interface (`MainFrame`).
+* `src/main/java/com/scanner/util/` - Contains the logic for disk writing and exporting report files (`ResultExporter`).
 
-## ⚙️ Cum se rulează proiectul
+## ⚙️ How to Run the Project
 
-### Din Terminal
-Pentru a compila și rula proiectul fără un IDE, navighează în directorul rădăcină și execută:
+### From Terminal
+To compile and run the project without an IDE, navigate to the root directory and execute:
 ```bash
 javac -d out src/main/java/com/scanner/Main.java src/main/java/com/scanner/core/*.java src/main/java/com/scanner/gui/*.java src/main/java/com/scanner/util/*.java
 java -cp out com.scanner.Main
